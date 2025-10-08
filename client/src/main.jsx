@@ -7,14 +7,24 @@ import { createBrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
 
+//Auth 
+import Login from './pages/Auth/Login.jsx';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<App />} />)
+  createRoutesFromElements(
+  <Route path="/" element={<App />}>
+  <Route  path='/login' element={<Login />} />
+  </Route>)
 );
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
+      <ToastContainer />
       <RouterProvider router={router} />
     </Provider>
   </StrictMode>
 );
+// 
