@@ -1,10 +1,10 @@
-import { apiSlice } from "./apiSlice";
-import { USERS_URL } from "../constant.js";  
+import { apiSlice } from './apiSlice';
+import { USERS_URL } from '../constant.js';
 
 export const userApiSlice = apiSlice.injectEndpoints({
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     login: builder.mutation({
-      query: (data) => ({
+      query: data => ({
         url: `${USERS_URL}/login`,
         method: 'POST',
         body: data,
@@ -17,13 +17,25 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     resgister: builder.mutation({
-      query: (data) => ({
+      query: data => ({
         url: `${USERS_URL}`,
         method: 'POST',
         body: data,
-      })
-    })
+      }),
+    }),
+    profile: builder.mutation({
+      query: data => ({
+        url: `${USERS_URL}/profile`,
+        method: 'PUT',
+        body: data,
+      }),
+    }),
   }),
-}); 
+});
 
-export const { useLoginMutation, useLogoutMutation, useResgisterMutation } = userApiSlice;
+export const {
+  useLoginMutation,
+  useLogoutMutation,
+  useResgisterMutation,
+  useProfileMutation,
+} = userApiSlice;
