@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "backend": "nodemon backend/index.js",
-    "client":"npm run dev --prefix client",
+    "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run client\" \"npm run backend\""
   },
   "keywords": [],
@@ -20,7 +20,7 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-async-handler": "^1.2.0",
-    "formidable": "^3.5.4",
+    "express-formidable": "^1.2.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.19.1",
     "multer": "^2.0.2"
