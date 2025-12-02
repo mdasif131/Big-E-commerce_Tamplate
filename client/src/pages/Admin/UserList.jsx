@@ -8,6 +8,7 @@ import {
   useDeleteUserMutation,
   useUpdateUserMutation,
 } from '../../redux/api/usersApiSlice.js';
+import AdminMenu from './AdminMenu.jsx';
 const UserList = () => {
    const { data: users, refetch, isLoading, error } = useGetUsersQuery();
   const [deleteUser] = useDeleteUserMutation();
@@ -57,6 +58,7 @@ const UserList = () => {
         </Message>
       ) : (
         <div className="flex fex-col md:flex-row">
+          <AdminMenu />
           {/* Admin menu  */}
           <table className="w-full md:w-4/5 mx-auto">
             <thead>
