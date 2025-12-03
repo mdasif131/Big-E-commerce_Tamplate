@@ -161,7 +161,8 @@ export const addProductReview = asycHandler(async (req, res) => {
       );
 
       if (alreadyReviewed) {
-        return res.status(400).json({ message: 'Product already reviewed' });
+         res.status(400);
+         throw new Error('Product already reviewed');
       }
 
       const review = {
