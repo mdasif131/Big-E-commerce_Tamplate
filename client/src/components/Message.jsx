@@ -6,7 +6,7 @@ const Message = ({ variant, childern }) => {
       case 'success':
         return 'bg-green-100  text-green-700'; 
       case 'error':
-        return 'bg-red-100  text-red-700';
+        return 'bg-red-100  text-red-800! ';
       default:
         return 'bg-blue-100  text-blue-800';
     }
