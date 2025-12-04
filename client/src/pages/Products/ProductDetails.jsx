@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import moment from 'moment';
 import {
@@ -19,10 +19,12 @@ import {
 import HeartIcon from './HeartIcon.jsx';
 import Rating from './Rating.jsx';
 import ProductTaps from './ProductTaps.jsx';
+import { addToCart } from '../../redux/features/cart/cartSlice.js';
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
@@ -37,6 +39,12 @@ const ProductDetails = () => {
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
   
+  const addToCartHandler = () => {
+    dispatch(addToCart({ ...product, qty }));
+    navigate('/cart');
+  };
+  
+  
   const submitHandler = async e => {
     e.preventDefault();
     try {
@@ -47,6 +55,8 @@ const ProductDetails = () => {
       toast.error(error?.data || error.message);
     }
   };
+
+
   return (
     <>
       <div>
@@ -137,7 +147,7 @@ const ProductDetails = () => {
                 </div>
                 <div className="btn-container">
                   <button
-                    // onClick={addToCartHandler}
+                    onClick={addToCartHandler}
                     disabled={product.countInStock === 0}
                     className="bg-pink-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
                   >
