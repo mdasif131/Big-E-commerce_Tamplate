@@ -9,7 +9,7 @@
     @apply border rounded-lg bg-[#101011] text-white focus:border-green-300 focus:outline-none
   }
   .input-profile-thems{
-    @apply border rounded-sm bg-[#101011] text-white focus:border-pink-500 not-first:focus:outline-none
+    @apply border rounded-sm bg-[#101011] text-white focus:border-pink-500! focus:outline-none
   }
 body{
   @apply bg-[#0f0f10] text-[#fff]
