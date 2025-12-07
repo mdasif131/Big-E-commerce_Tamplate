@@ -7,8 +7,8 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      '/api/': 'https://big-e-commerce-tamplate.vercel.app',
-      '/uploads/': 'https://big-e-commerce-tamplate.vercel.app',
+      '/api/': 'https://localhost:5000',
+      '/uploads/': 'https://localhost:5000',
     },
   },
 });
