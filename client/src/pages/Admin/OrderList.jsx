@@ -27,15 +27,18 @@ const OrderList = () => {
             </tr>
           </thead>
           <tbody>
-            {orders.map(order => (
+            {orders?.map(order => (
               <tr key={order._id}>
                 <td>
-                  <img
-                    src={order.orderItems[0].image}
-                    alt={order._id}
-                    className="w-[5rem] pt-4"
-                  />
+                  <div>
+                    <img
+                      src={order?.orderItems[0].image}
+                      alt={order._id}
+                      className="w-[6rem] mb-5"
+                    />
+                  </div>
                 </td>
+
                 <td>{order._id}</td>
 
                 <td>{order.user ? order.user.username : 'N/A'}</td>
