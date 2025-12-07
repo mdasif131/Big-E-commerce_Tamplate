@@ -27,6 +27,12 @@ import Favorites from './pages/Products/Favorites.jsx';
 import ProductDetails from './pages/Products/ProductDetails.jsx';
 import Cart from './pages/Cart.jsx';
 import Shop from './pages/Shop.jsx';
+import Shipping from './pages/Orders/Shipping.jsx';
+import PlaceOrder from './pages/Orders/PlaceOrder.jsx';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+import Order from './pages/Orders/Order.jsx';
+import UserOrder from './pages/Users/UserOrder.jsx';
+import OrderList from './pages/Admin/OrderList.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,13 +40,17 @@ const router = createBrowserRouter(
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route index={true} path="/" element={<Home />} />
-      <Route  path="/favorite" element={<Favorites />} />
-      <Route  path="/product/:id" element={<ProductDetails />} />
-      <Route  path="/cart" element={<Cart />} />
-      <Route  path="/shop" element={<Shop />} />
+      <Route path="/favorite" element={<Favorites />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/user-orders" element={<UserOrder />} />
 
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
+        <Route path="/shipping" element={<Shipping />} />
+        <Route path="/placeorder" element={<PlaceOrder />} />
+        <Route path="/order/:id" element={<Order />} />
       </Route>
       {/* Admin Routes  */}
       <Route path="/admin" element={<AdminRoute />}>
@@ -49,6 +59,7 @@ const router = createBrowserRouter(
         <Route path="productList" element={<ProductList />} />
         <Route path="allproductslist" element={<AllProduct />} />
         <Route path="product/update/:_id" element={<ProductUpdate />} />
+        <Route path="orderList" element={<OrderList />} />
       </Route>
     </Route>
   )
@@ -57,8 +68,10 @@ const router = createBrowserRouter(
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
-      <ToastContainer />
-      <RouterProvider router={router} />
+      <PayPalScriptProvider>
+        <ToastContainer />
+        <RouterProvider router={router} />
+      </PayPalScriptProvider>
     </Provider>
   </StrictMode>
 );
